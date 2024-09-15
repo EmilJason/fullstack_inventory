@@ -1,21 +1,11 @@
 const express = require('express');
 const { Sequelize } = require('sequelize');
-const config = require('./config');
+const config = require('./config/config');
 require('dotenv').config();
 
 const app = express();
 app.use(express.json({bodyParser: true}));
 app.use(express.urlencoded({ extended: true }));
-
-const sequelize = new Sequelize(config.db.database, config.db.user, config.db.password, {
-    host: config.db.host,
-    dialect: 'mysql',
-    port: config.db.port,
-});
-
-sequelize.authenticate()
-    .then(() => console.log('MySQL connected'))
-    .catch(err => console.log('Error: ' + err));
 
 // Import routes
 const categoryRoutes = require('./routes/categories');
@@ -35,7 +25,7 @@ app.get('/', (req, res) => {
 // app.use('/customers', customerRoutes);
 // app.use('/orders', orderRoutes);
 // app.use('/products', productRoutes);
-// app.use('/suppliers', supplierRoutes);
+app.use('/suppliers', supplierRoutes);
 // app.use('/transactions', transactionRoutes);
 // app.use('/warehouses', warehouseRoutes);
 // app.use('/stockLevels', stockLevelRoutes);

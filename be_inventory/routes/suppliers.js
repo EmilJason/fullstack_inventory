@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Supplier = require('../models/supplier');
-
+const sequelize = require('sequelize')
 // Get all suppliers
 router.get('/', async (req, res) => {
     try {

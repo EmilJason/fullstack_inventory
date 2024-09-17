@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
     res.send('Welcome to the Inventory Management System');
 });
 // app.use('/categories', categoryRoutes);
-// app.use('/customers', customerRoutes);
+app.use('/customers', customerRoutes);
 // app.use('/orders', orderRoutes);
 // app.use('/products', productRoutes);
 app.use('/suppliers', supplierRoutes);
